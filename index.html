@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloudX — Облачные решения</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeDown 1s ease;
+}
+
+header h1 {
+  font-weight: 800;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #60a5fa;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+  animation: fadeUp 1.2s ease;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.btn {
+  padding: 12px 30px;
+  background: #3b82f6;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #2563eb;
+  transform: translateY(-3px);
+}
+
+.features {
+  padding: 80px 10%;
+  background: white;
+  color: #0f172a;
+  text-align: center;
+}
+
+.features h3 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #f1f5f9;
+  padding: 30px;
+  border-radius: 20px;
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #0f172a;
+  font-size: 0.9rem;
+}
+
+/* Анимации */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CloudX</h1>
+  <nav>
+    <a href="#">Главная</a>
+    <a href="#features">Преимущества</a>
+    <a href="#">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Облако нового поколения</h2>
+  <p>Быстро. Надёжно. Масштабируемо. Перенесите ваш бизнес в облако уже сегодня.</p>
+  <a href="#" class="btn">Начать</a>
+</section>
+
+<section class="features" id="features">
+  <h3>Наши преимущества</h3>
+  <div class="feature-grid">
+    <div class="card">⚡ Высокая скорость работы</div>
+    <div class="card">🔒 Надёжная защита данных</div>
+    <div class="card">📈 Гибкая масштабируемость</div>
+    <div class="card">☁️ Доступ из любой точки мира</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 CloudX. Все права защищены.
+</footer>
+
+<script>
+// Плавное появление карточек при скролле
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.3 });
+
+cards.forEach(card => {
+  observer.observe(card);
+});
+</script>
+
+</body>
+</html>
